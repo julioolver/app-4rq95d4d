@@ -15,6 +15,11 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity');
+            $table->string('sku');
+
+            $table->foreign('sku')->references('sku')->on('products');
+
             $table->timestamps();
         });
     }

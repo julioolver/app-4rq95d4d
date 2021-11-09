@@ -15,7 +15,10 @@ class CreateAuditsTable extends Migration
     {
         Schema::create('audits', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('form', 100);
+            $table->string('sku', 100);
+            $table->string('info', 150);
+            $table->dateTime('date_time');
         });
     }
 
