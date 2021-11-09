@@ -26,24 +26,27 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         try {
-            $response = array('response' => '', 'success' => true);
-
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
                 'sku' => 'required|unique:products'
             ]);
 
             if ($validator->fails()) {
-                $response['response'] = $validator->errors();
-                $response['success'] = false;
-                return response()->json($response, 422);
+                return response()->json(['response' => $validator->errors(), 'success' => false], 422);
             } else {
-                $response['response'] = $this->model->create($request->all());
-                return response()->json($response, 201);
+                $product = $this->model->create($request->all());
+                return response()->json($product, 201);
             }
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 403);
         }
+    }
+
+    public function show($id)
+    {
+        $product = $this->model->find($id);
+
+        return response()->json($product);
     }
 
     public function edit($id)

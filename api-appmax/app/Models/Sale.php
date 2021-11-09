@@ -22,7 +22,7 @@ class Sale extends Model
     protected static function booted()
     {
         static::created(function ($sale) {
-            $sale->product()->increment('quantity', $sale->quantity);
+            $sale->product()->decrement('quantity', $sale->quantity);
         });
     }
 }

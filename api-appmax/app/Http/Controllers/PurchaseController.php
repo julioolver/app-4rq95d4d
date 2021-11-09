@@ -25,11 +25,13 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
         try {
-            $response = array('response' => '', 'success' => true);
-            $response['response'] = $this->model->create($request->all());
-            return response()->json($response, 201);
-        } catch (\Throwable $th) {
-            return $th;
+            $purchase =  $this->model->create($request->all());
+            if ($purchase) {
+                $this->model->saveAudit($purchase);
+                return response()->json($purchase, 201);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 403);
         }
     }
 
@@ -42,8 +44,8 @@ class PurchaseController extends Controller
         try {
             $purchase = $this->model->find($id);
             return response()->json($purchase, 200);
-        } catch (\Throwable $th) {
-            return response()->json($th, 404);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 403);
         }
     }
 
@@ -54,8 +56,8 @@ class PurchaseController extends Controller
             $purchase->update($request->all());
 
             return response()->json('success', 200);
-        } catch (\Throwable $th) {
-            return response()->json($th, 403);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 403);
         }
     }
 
@@ -65,8 +67,8 @@ class PurchaseController extends Controller
             $this->model->delete($id);
 
             return response()->json(['message' => 'Deleted Successfully'], 200);
-        } catch (\Throwable $th) {
-            return response()->json($th, 403);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 403);
         }
     }
 }

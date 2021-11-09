@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Audit;
 use App\Models\Purchase;
 
 class PurchaseRepository extends AbstractRepository
@@ -10,9 +11,9 @@ class PurchaseRepository extends AbstractRepository
 
     public function saveAudit($data)
     {
-        $this->audit->saveAudit([
+        return Audit::create([
             'form'      => 'Purchase',
-            'register'  => "SKU: $data->sku",
+            'sku'  => "SKU: $data->sku",
             'info'      => "Quant. : $data->quantity",
             'date_time' => $data->created_at
         ]);

@@ -26,12 +26,10 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         try {
-            $response = array('response' => '', 'success' => true);
             $sale =  $this->model->create($request->all());
             if ($sale) {
-                $response['response'] = $sale;
                 $this->model->saveAudit($sale);
-                return response()->json($response, 201);
+                return response()->json($sale, 201);
             }
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 403);
@@ -46,6 +44,7 @@ class SaleController extends Controller
     {
         try {
             $sale = $this->model->find($id);
+
             return response()->json($sale, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 403);
@@ -55,8 +54,7 @@ class SaleController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $sale = $this->model->findOrFail($id);
-            $sale->update($request->all());
+            $this->model->update($request->all(), $id);
 
             return response()->json('success', 200);
         } catch (\Exception $e) {

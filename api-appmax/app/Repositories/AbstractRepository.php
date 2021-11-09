@@ -36,6 +36,12 @@ abstract class Abstractrepository
         return $this->model->findOrFail($id);
     }
 
+    public function update($data, $id)
+    {
+        $update = $this->findOrFail($id);
+        return $update->update($data);
+    }
+
     public function delete($id)
     {
         $delete = $this->findOrFail($id);
