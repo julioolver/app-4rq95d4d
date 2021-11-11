@@ -1,6 +1,8 @@
 # app-4rq95d4d
 ## API desenvolvida com Laravel e Vue.JS, cadastro de produtos com compra/venda.
 
+O back-end foi desenvolvido com o Laravel 8.0, utlizando Repository Pattern. O Front-end foi desenvolvido com Vue.js e o Framework Vuetify, seguindo a estrutura de pastas/conceitos da Clean Architecture (Arquitetura Limpa).
+
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
