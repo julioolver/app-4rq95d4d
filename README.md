@@ -23,6 +23,9 @@ $ cd api-appmax
 # Instale as dependências
 $ composer install
 
+# Rodando as migrations do Banco de Dados
+$ php artisan migrate
+
 # Defina as configurações do servidor
 $ vim .env
 ```
