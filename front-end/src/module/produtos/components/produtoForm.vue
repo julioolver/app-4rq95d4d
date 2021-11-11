@@ -32,6 +32,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
+                  type="number"
                   v-model="controller.item.quantity"
                   :rules="controller.requiredRule"
                   label="Quantidade de estoque"

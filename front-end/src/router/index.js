@@ -24,6 +24,11 @@ const routes = [
     path: '/compras',
     name: 'Compra',
     component: () => import('../module/compras/view/Compra.vue')
+  },
+  {
+    path: '/auditoria',
+    name: 'Auditoria',
+    component: () => import('../module/auditoria/view/Auditoria.vue')
   }
 ]
 

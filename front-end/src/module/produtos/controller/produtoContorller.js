@@ -84,9 +84,26 @@ export default class ProdutoController {
     this.dialogDelete = true;
   }
 
-  deleteItemConfirm() {
-    this.products.splice(this.editedIndex, 1);
-    this.closeDelete();
+  async deleteItemConfirm() {
+    try {
+      await http2.delete(`product/${this.editedItem.id}`);
+      await this.buscaDados();
+      this.closeDelete();
+      
+      this.showSnack = true;
+      this.snackData = {
+        text: 'Registro excluído com sucesso',
+        color: 'green',
+        timeout: 5000
+      }
+    } catch (error) {
+      this.showSnack = true;
+      this.snackData = {
+        text: error,
+        color: 'red',
+        timeout: 5000
+      }
+    }
   }
 
   close() {
@@ -125,7 +142,7 @@ export default class ProdutoController {
             timeout: 5000
           }
         } catch (e) {
-          const error = e.response.data.response;
+          const error = e.response.data;
           let errorMessage = 'Erro : ';
 
           Object.keys(error).forEach(e => {

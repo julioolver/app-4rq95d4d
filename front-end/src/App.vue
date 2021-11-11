@@ -6,38 +6,16 @@
           @click="drawer = true"
           class="hidden-md-and-up"
         ></v-app-bar-nav-icon>
-        <v-toolbar-title>
-          {{ $vuetify.breakpoint.width }}
-        </v-toolbar-title>
-        <div class="d-flex align-center">
-          <v-img
-            alt="Vuetify Logo"
-            class="shrink mr-2"
-            contain
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-            transition="scale-transition"
-            width="40"
-          />
-
-          <v-img
-            alt="Vuetify Name"
-            class="shrink mt-1 hidden-sm-and-down"
-            contain
-            min-width="100"
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-            width="100"
-          />
-        </div>
 
         <v-spacer></v-spacer>
 
         <v-btn
-          href="https://github.com/vuetifyjs/vuetify/releases/latest"
+          href="https://www.linkedin.com/in/julio-cesar-oliveira-da-silva-957593169/"
           target="_blank"
           text
         >
-          <span class="mr-2">Latest Release</span>
-          <v-icon>mdi-open-in-new</v-icon>
+          <span class="mr-2">Julio Cesar</span>
+          <v-icon>mdi-linkedin</v-icon>
         </v-btn>
       </v-app-bar>
       <v-navigation-drawer
@@ -71,8 +49,11 @@
         rounded="lg"
       >
         <v-toolbar-items>
-          <v-btn text @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+          <!-- <v-btn text @click="$vuetify.theme.dark = !$vuetify.theme.dark"
             >Dark Theme</v-btn
+          > -->
+          <v-btn text to="/"
+            >Home</v-btn
           >
           <template v-for="menu in itemsMenu">
             <v-btn :to="menu.to" text :key="menu.to">
@@ -114,6 +95,11 @@ export default {
         icon: "mdi-cart-arrow-up",
         name: "Vendas",
       },
+      {
+        to: "auditoria",
+        icon: "mdi-account-details",
+        name: "Auditoria",
+      }
     ],
   }),
   computed: {

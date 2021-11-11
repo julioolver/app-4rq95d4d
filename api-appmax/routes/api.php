@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SaleController;
@@ -24,5 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResources([
     'product'  => ProductController::class,
     'sale'     => SaleController::class,
-    'purchase' => PurchaseController::class
+    'purchase' => PurchaseController::class,
+    'audit'    => AuditController::class
 ]);

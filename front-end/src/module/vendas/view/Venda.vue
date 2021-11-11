@@ -33,13 +33,13 @@
                       <v-btn
                         color="red"
                         outlined
-                        @click="controller.closeDelete"
+                        @click="controller.closeDelete()"
                         >Cancelar</v-btn
                       >
                       <v-btn
                         color="green darken-1"
                         outlined
-                        @click="controller.deleteItemConfirm"
+                        @click="controller.deleteItemConfirm()"
                         >Confirmar</v-btn
                       >
                       <v-spacer></v-spacer>
@@ -57,9 +57,7 @@
               </v-icon>
             </template>
             <template v-slot:no-data>
-              <v-btn color="primary" @click="controller.initialize">
-                Reset
-              </v-btn>
+              Sem informações para exibir.
             </template>
           </v-data-table>
         </v-card-text>

@@ -33,13 +33,13 @@
                       <v-btn
                         color="red"
                         outlined
-                        @click="controller.closeDelete"
+                        @click="controller.closeDelete()"
                         >Cancelar</v-btn
                       >
                       <v-btn
                         color="green darken-1"
                         outlined
-                        @click="controller.deleteItemConfirm"
+                        @click="controller.deleteItemConfirm()"
                         >Confirmar</v-btn
                       >
                       <v-spacer></v-spacer>
@@ -48,6 +48,7 @@
                 </v-dialog>
               </v-toolbar>
             </template>
+            <template v-slot:no-data> Sem informações para exibir. </template>
             <template v-slot:item.actions="{ item }">
               <v-icon small class="mr-2" @click="controller.editItem(item)">
                 mdi-pencil
@@ -60,15 +61,21 @@
         </v-card-text>
       </v-card>
     </v-container>
+    <snackbar
+      v-if="controller.showSnack"
+      :data="controller.snackData"
+      v-model="controller.showSnack"
+    />
   </div>
 </template>
 
 <script>
 import { compraController } from "../di/di";
 import compraForm from "../components/compraForm.vue";
+import Snackbar from '../../../components/snackbar/Snackbar.vue';
 
 export default {
-  components: { compraForm },
+  components: { compraForm, Snackbar },
   data: (context) => ({
     controller: new compraController(context),
   }),

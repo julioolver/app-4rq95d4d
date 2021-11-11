@@ -81,12 +81,29 @@ export default class VendaController {
   deleteItem(item) {
     this.editedIndex = this.sales.indexOf(item);
     this.editedItem = Object.assign({}, item);
+    this.item = item;
     this.dialogDelete = true;
   }
 
-  deleteItemConfirm() {
-    this.sales.splice(this.editedIndex, 1);
-    this.closeDelete();
+  async deleteItemConfirm() {
+    try {
+      await http2.delete(`sale/${this.item.id}`);
+      await this.buscaDados();
+      this.closeDelete();
+      this.showSnack = true;
+      this.snackData = {
+        text: 'Registro excluído com sucesso',
+        color: 'green',
+        timeout: 5000
+      }
+    } catch (error) {
+      this.showSnack = true;
+      this.snackData = {
+        text: error,
+        color: 'red',
+        timeout: 5000
+      }
+    }
   }
 
   close() {

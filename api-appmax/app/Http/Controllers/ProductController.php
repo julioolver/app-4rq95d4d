@@ -32,7 +32,7 @@ class ProductController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['response' => $validator->errors(), 'success' => false], 422);
+                return response()->json($validator->errors(), 422);
             } else {
                 $product = $this->model->create($request->all());
                 return response()->json($product, 201);
