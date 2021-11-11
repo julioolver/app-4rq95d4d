@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Audit;
 use App\Models\Sale;
 
-class SaleRepository extends Abstractrepository
+class SaleRepository extends AbstractRepository
 {
     protected $model = Sale::class;
     //protected $audit = app(Audit::class);

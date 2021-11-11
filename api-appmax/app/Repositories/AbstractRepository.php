@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-abstract class Abstractrepository
+abstract class AbstractRepository
 {
     protected $model;
 
@@ -18,7 +18,7 @@ abstract class Abstractrepository
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model->orderBy('id')->get();
     }
 
     public function create($data)
