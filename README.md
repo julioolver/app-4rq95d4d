@@ -29,8 +29,7 @@ $ php artisan migrate
 # Defina as configurações do servidor
 $ vim .env
 
-#Rotas: 
-
+# Rotas: 
 api/product
 api/sale
 api/purchase
