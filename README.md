@@ -17,13 +17,12 @@ $ git clone <https://github.com/julioolver/app-4rq95d4d>
 # Acesse a pasta do projeto no terminal/cmd
 $ cd app-4rq95d4d
 
-<<<<<<< HEAD
+
 # Vá para a pasta api (back-end)
 $ cd api
 =======
 # Vá para a pasta api-appmax (back-end)
 $ cd api-appmax
->>>>>>> 364569d2219675fcf958fe9a6aec1ecd78e00d9d
 
 # Instale as dependências
 $ composer install
