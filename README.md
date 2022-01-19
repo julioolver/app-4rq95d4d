@@ -21,8 +21,8 @@ $ cd app-4rq95d4d
 # Vá para a pasta api (back-end)
 $ cd api
 =======
-# Vá para a pasta api-appmax (back-end)
-$ cd api-appmax
+# Vá para a pasta api (back-end)
+$ cd api
 
 # Instale as dependências
 $ composer install
